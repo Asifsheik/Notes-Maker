@@ -1,6 +1,6 @@
 # 📝 Notes Maker
 
-A simple and interactive **Notes Maker** web application built using HTML, CSS, and JavaScript. This project allows users to create notes dynamically using popup boxes and overlay effects.
+https://asifsheik.github.io/Notes-Maker/ - A simple and interactive **Notes Maker** web application built using HTML, CSS, and JavaScript. This project allows users to create notes dynamically using popup boxes and overlay effects.
 
 ## 🚀 Features
 
