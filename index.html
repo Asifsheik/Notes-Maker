@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    <title>Notes Maker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <h1 class="header__name">Notes Maker</h1>
+        </div>
+    </header>
+    <div class="body">
+        <div class="note__card">
+            <h3 class="note__card__title">2026-11-04</h3>
+            <h4 class="note__card__sub">Array Functions</h4>
+            <p class="note__card__des">
+                Arrow function,ForEach,Mapped Array,Filter Function,Reduce Function.
+            </p>
+            <button class="delete_item" id="delete">Delete</button>
+        </div>
+        
+    </div>
+
+    <!-- add button -->
+    <button class="plus__button" id="plus">+</button>
+
+    <!-- Popup screen -->
+     <div id="overlay" class="overlay hidden"></div>
+     <div id="popup" class="popup hidden">
+         <h2>Add Notes</h2>
+
+    <form class="form">
+       
+
+            <input type="date" class="dates" placeholder="DATE"><br>
+
+            <input type="text" class="title_sub" placeholder="Topics"><br>
+
+            <input type=textarea class="textarea" placeholder="Explain in brief...."><br>
+
+            <button id="add">ADD</button>
+
+            <button id="Cancel">Cancel</button>
+
+            
+
+    </form>
+    </div>
+
+    <script >
+
+        var btn =document.getElementById("plus")
+        var popup=document.getElementById("popup")
+        var overlay=document.getElementById("overlay")
+        btn.addEventListener("click",function(event){
+            // Empty the fields so the last note's text is not still there.
+            document.querySelector(".dates").value = ""
+            document.querySelector(".title_sub").value = ""
+            document.querySelector(".textarea").value = ""
+            popup.classList.remove("hidden")
+            overlay.classList.remove("hidden")
+            
+        })
+        var cancel=document.getElementById("Cancel")
+        cancel.addEventListener("click",function(event){
+            event.preventDefault()
+            popup.classList.add("hidden")
+            overlay.classList.add("hidden")
+        })
+        var add=document.getElementById("add")
+        var note_card=document.querySelector(".body")
+        var dates=document.querySelector(".dates")
+        var title_sub=document.querySelector(".title_sub")
+        var textarea=document.querySelector(".textarea")
+
+
+
+
+        add.addEventListener("click",function(event){
+            event.preventDefault()
+            var div=document.createElement("div")
+            div.classList.add("note__card")
+            div.innerHTML=`<h3 class="note__card__title">${dates.value}</h3>
+            <h4 class="note__card__sub">${title_sub.value}</h4>
+            <p class="note__card__des">${textarea.value}</p>
+            <button class="delete_item" onclick="delete_items(event)" id="delete">Delete</button>`
+
+            note_card.append(div)
+            popup.classList.add("hidden")
+            overlay.classList.add("hidden")
+
+        })
+
+        function delete_items(event){
+            event.target.parentElement.remove()
+        }
+
+         var del=document.getElementById("delete")
+         del.addEventListener("click",function(event){
+            event.target.parentElement.remove()
+         })
+         
+         
+         
+         
+         
+
+        
+
+
+
+       
+
+
+    </script>
+   
+</body>
+
+</html>
